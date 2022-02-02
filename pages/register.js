@@ -15,7 +15,7 @@ const Register = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post(`http://localhost:8000/api/register`, {
+      const { data } = await axios.post('register', {
         name,
         email,
         password,
