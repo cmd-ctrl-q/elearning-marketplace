@@ -89,7 +89,7 @@ const Register = () => {
         <p className='text-center p-3'>
           Already registered?
           <Link href='/login'>
-            <a>Login</a>
+            <a>&nbsp;Login</a>
           </Link>
         </p>
       </div>
