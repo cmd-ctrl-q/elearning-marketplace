@@ -1,5 +1,5 @@
 // Redux like state management system
-import { useReducer, createContext } from 'react';
+import { useReducer, createContext, useEffect } from 'react';
 
 // initial state
 const initialState = {
@@ -25,6 +25,14 @@ const rootReducer = (state, action) => {
 // therefore allowing entire app to have access to the context.
 const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(rootReducer, initialState);
+
+  useEffect(() => {
+    // get data from local storage
+    dispatch({
+      type: 'LOGIN',
+      payload: JSON.parse(window.localStorage.getItem('user')),
+    });
+  }, []);
 
   return (
     <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
