@@ -1,8 +1,9 @@
 import { useState, useContext } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { SyncOutlined } from '@ant-design/icons/lib/icons';
-import Link from 'next/link';
 import { Context } from '../context';
 
 const Login = () => {
@@ -12,6 +13,9 @@ const Login = () => {
 
   // global state
   const { state, dispatch } = useContext(Context);
+
+  // router for redirecting user
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +36,9 @@ const Login = () => {
       // save in local storage
       window.localStorage.setItem('user', JSON.stringify(data));
       setLoading(false);
+      // redirect user
+      window.location.pathname = '/';
+      router.push('/');
     } catch (err) {
       setLoading(false);
       toast.error(err.response.data);
