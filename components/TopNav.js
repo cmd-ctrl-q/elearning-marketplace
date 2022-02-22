@@ -75,6 +75,7 @@ export const TopNav = () => {
 
       {user !== null && (
         <SubMenu
+          key='/menu'
           className='ms-auto'
           icon={<CoffeeOutlined />}
           title={user && user.name}
